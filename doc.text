@@ -1,0 +1,42 @@
+JPA e Hibernate : Asociaciones
+
+es la cardinalidad de la relacion de las tablas
+
+--------------- crear proyectos -----------------
+-dependencias
+    -- MySQL Driver sql
+    -- spring Data JPA sql
+
+--------------- logica de proyecto ---------------
+- los resultados seran mostrado por la consola por que son ejeuciones de SQL
+- se crean la tablas en las clases depsues relacionarlas las clase dandoles la cardinalidad con los canceptos de @ManyToOne, @OneToMany, @ManyToMany o OneToOne
+- se configura la concexion a la base de datos
+- se define que tablas tendrans datos al moento de crearse en la hoja import.sql
+- se implementa "implements CommandLineRunner", en la hoja principal del proyecto SpringbootJpaRelationApplication, solictanto crear el campo de ejecucion run
+- para crear un tabla intermedia donde tenga la relaicon entre un cliente tenga muchas direcciones se realiza la definicion en la clase de client @OneToMany, y el modal de address como tabla de relaccion
+-- para crear relaccion sin una tabla intermedia se usa el @JoinColumn para crear una forengkey este ne la tabla donde se definie la relaccion dentro del modal
+-- para crear una taba que tenga las key de las tablas relacionadas se realiza por un @JoinTable con los campos de cada tabla indicanod cual es la FOREINKEY
+-- consulta personalizada en ClientRepository se ingresa el metodo donde sera la consulta perosnalizada con @Query donde se ingresa el SELECT
+
+-------- orden de creacion de documentos --------
+- se crea el package entities
+- se crear la clases dentro de entites
+    -- Client
+    -- Invoice
+- creamos el package repositories
+    -- creamo la clase ClientRepository donde la interface y  la extends con la referencia
+- inciporamos la configuracion de la conexionde SQL en la carpeta resources -> application.properties
+- se crear el archivo import.sql en la ruat de sources, cuanopd se crean las tabla se poblara con el insert que tenga esta hoja
+- se crear la clases dentro de entites
+    -- address
+    -- ClientDetails
+- se crear la class en repositories
+    -- ClientDetailsRepository
+- se crean la class dentro de entites
+    -- Student
+    -- Course
+- se crear la class en repositories
+    -- StudentRepository
+
+
+
