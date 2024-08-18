@@ -1,0 +1,44 @@
+## JPA e Hibérnate : Asociaciones
+
+es la cardinalidad de la relación de las tablas
+
+------------------------------------ CARGAR STARTERS ---------------------------------------
+
+- dependencias
+    - MySQL Driver sql
+    - spring Data JPA sql
+
+------------------------------------ CONCEPTOS --------------------------------------
+
+- los resultados serán mostrado por la consola porque son ejecuciones de SQL
+- se crean la tablas en las clases después relacionarlas las clase dándoles la cardinalidad con los conceptos de @ManyToOne, @OneToMany, @ManyToMany o OneToOne
+- se configura la conexión a la base de datos
+- se define que tablas tendrán datos al momento de crearse en la hoja import.sql
+- se implementa "implements CommandLineRunner", en la hoja principal del proyecto SpringbootJpaRelationApplication, solicitante crear el campo de ejecución run
+- para crear un tabla intermedia donde tenga la relación entre un cliente tenga muchas direcciones se realiza la definición en la clase de client @OneToMany, y el modal de address como tabla de relación
+-- para crear relación sin una tabla intermedia se usa el @JoinColumn para crear una forengkey este en la tabla donde se define la relación dentro del modal
+-- para crear una taba que tenga las key de las tablas relacionadas se realiza por un @JoinTable con los campos de cada tabla indicando cual es la FOREINKEY
+-- consulta personalizada en ClientRepository se ingresa el método donde será la consulta personalizada con @Query donde se ingresa el SELECT
+
+--------------------------ORDEN DE CREACION DE DOCUMENTOS-----------------------
+
+- se crea el package entities
+- se crear la clases dentro de entites
+    -- Client
+    -- Invoice
+- creamos el package repositories
+    -- creamos la clase ClientRepository donde la interface y  la extends con la referencia
+- incorporamos la configuración de la conexión SQL en la carpeta resources -> application.properties
+- se crear el archivo import.sql en la ruta de sources, cuando se crean las tabla se poblara con el insert que tenga esta hoja
+- se crear la clases dentro de entites
+    -- address
+    -- ClientDetails
+- se crear la class en repositories
+    -- ClientDetailsRepository
+- se crean la class dentro de entites
+    -- Student
+    -- Course
+- se crear la class en repositories
+    -- StudentRepository
+
+
